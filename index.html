@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE1NONLY | CHAMPAK AI</title>  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #050b08;
+      color: #00ff88;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 22px 16px;
+      text-align: center;
+      border-bottom: 1px solid #00ff8844;
+    }
+
+    header h1 {
+      font-size: 30px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px #00ff88;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #a2ffc9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 16px;
+    }
+
+    button {
+      background: #092318;
+      color: #00ff88;
+      border: 1px solid #00ff88;
+      padding: 12px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #00ff88;
+      color: #00150b;
+    }
+
+    main {
+      width: min(900px, 92%);
+      margin: 25px auto;
+    }
+
+    .card {
+      background: #09140f;
+      border: 1px solid #00ff8844;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #00ff8808;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #c4e8d2;
+      line-height: 1.7;
+    }
+
+    #chatBox {
+      height: 220px;
+      overflow-y: auto;
+      border: 1px solid #00ff8844;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 7px;
+      color: #d4ffe4;
+      overflow-wrap: anywhere;
+    }
+
+    .message {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .label {
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border-radius: 7px;
+      border: 1px solid #00ff8877;
+      background: #020704;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #80b99a;
+      font-size: 13px;
+    }
+
+    .status {
+      color: #ffd166;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+    }
+  </style></head><body>
+  <header>
+    <h1>THE1NONLY</h1>
+    <p>Friends • Technology • Artificial Intelligence</p>
+  </header>  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('friends')">Friends</button>
+    <button onclick="showSection('champak')">CHAMPAK AI</button>
+    <button onclick="showSection('ironman')">IRON MAN</button>
+  </nav>  <main>
+    <section class="card" id="home">
+      <h2>Welcome to Headquarters</h2>
+      <p>
+        Welcome to THE1NONLY, our technology headquarters.
+        Explore our projects, communicate with friends, and
+        discover the world of artificial intelligence.
+      </p>
+    </section><section class="card" id="friends">
+  <h2>Friends Zone</h2>
+  <p>
+    This section is reserved for our private friends' chat.
+    Real-time messaging will be added when the backend is connected.
+  </p>
+</section>
+
+<section class="card" id="champak">
+  <h2>🤖 CHAMPAK AI</h2>
+  <p>Your AI assistant, powered by Gemini when connected.</p>
+
+  <div id="chatBox" aria-live="polite">
+    <div class="message">
+      <span class="label">CHAMPAK:</span>
+      Hello! My AI connection is not configured yet.
+    </div>
+  </div>
+
+  <form class="input-row" id="chatForm">
+    <input
+      id="userMessage"
+      type="text"
+      placeholder="Ask CHAMPAK AI..."
+      maxlength="4000"
+      autocomplete="off"
+      required
+    >
+    <button type="submit" id="sendButton">Send</button>
+  </form>
+
+  <p class="status" id="chatStatus">
+    Status: Waiting for backend connection.
+  </p>
+</section>
+
+<section class="card" id="ironman">
+  <h2>🛰️ IRON MAN Satellite</h2>
+  <p>
+    Project: IRON MAN Satellite Telemetry System.
+    <br>
+    Ground station: Arduino Uno R3.
+    <br>
+    Wireless communication: SX1278 RA-02 LoRa.
+    <br>
+    Satellite controller and camera: ESP32-CAM.
+    <br>
+    Environmental sensor: DHT11.
+  </p>
+  <p style="margin-top: 12px;">
+    Satellite telemetry will appear here after the hardware
+    communication system is connected.
+  </p>
+</section>
+
+  </main>  <footer>
+    THE1NONLY © 2026 | Built for our technology projects
+  </footer>  <script>
+    function showSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+
+    const chatForm = document.getElementById("chatForm");
+    const userMessage = document.getElementById("userMessage");
+    const chatBox = document.getElementById("chatBox");
+    const chatStatus = document.getElementById("chatStatus");
+    const sendButton = document.getElementById("sendButton");
+
+    // Add your Cloudflare Worker URL here after creating the backend.
+    const API_URL = "";
+
+    function addMessage(label, text) {
+      const message = document.createElement("div");
+      message.className = "message";
+
+      const name = document.createElement("span");
+      name.className = "label";
+      name.textContent = label + ": ";
+
+      message.appendChild(name);
+      message.appendChild(document.createTextNode(text));
+      chatBox.appendChild(message);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    chatForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const message = userMessage.value.trim();
+      if (!message) return;
+
+      addMessage("YOU", message);
+      userMessage.value = "";
+
+      if (!API_URL) {
+        chatStatus.textContent =
+          "Status: Backend not connected yet. We will connect Cloudflare next.";
+        return;
+      }
+
+      sendButton.disabled = true;
+      chatStatus.textContent = "CHAMPAK is thinking...";
+
+      try {
+        const response = await fetch(API_URL + "/api/ai", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Request failed.");
+        }
+
+        addMessage("CHAMPAK", data.reply || "No response received.");
+        chatStatus.textContent = "Status: Connected.";
+      } catch (error) {
+        chatStatus.textContent =
+          "Status: Connection failed. Check the backend settings.";
+      } finally {
+        sendButton.disabled = false;
+      }
+    });
+  </script></body>
+</html>
